@@ -17,10 +17,7 @@
 
         <div class="navigation-div">
 
-            <button onclick="switchPage(0)"  class="button">O mnie <br><span class="material-symbols-outlined">
-                    contact_page
-                </span></button>
-            <button onclick="switchPage(1)" class="button">Projekty<br><span class="material-symbols-outlined">
+            <button onclick="switchPage(0)" class="button">Projekty<br><span class="material-symbols-outlined">
                     workspaces
                 </span></button>
 
@@ -29,12 +26,42 @@
 
     <div id="content" class="content">
 
-        <div class="content-page opaque" id="about-page">
-            about
-        </div>
 
         <div class="content-page" id="project-page">
-            projects
+
+            <div class="aside-bar">
+                <label for="Filter">Unity</label>
+                <input type="radio" name="Filter" value="Unity" >
+                <label for="Filter">Inne</label>
+                <input type="radio" name="Filter" value="Inne">
+
+                <button onclick="proccessTags()">Wybierz</button>
+                <button onclick="showAll()">Anuluj</button>
+
+            </div>
+            <div class="main-bar">
+
+                <h2 class="title">
+                    Projekty
+                    <br>
+                    <span class="material-symbols-outlined" style="font-size: 110%;">
+                        workspaces
+                    </span>
+                </h2>
+
+
+                <div id ="projects-bar" class="projects-bar"> 
+
+                   
+
+                </div>
+
+            </div>
+
+
+
+
+
         </div>
     </div>
 

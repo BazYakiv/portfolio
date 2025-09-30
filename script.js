@@ -1,28 +1,144 @@
 const content_section = document.getElementById("content");
 
+const projects_section = document.getElementById("projects-bar")
+
 const pages = content_section.children;
 
+const projects_array = [
+    {
+        title: "Generacja sferycznej mapy hexagonalnej",
+        description: "Projekt stworzony na unity z wykorzystaniem szumu Perlina do tworzenia zróżnicowanych terenów",
+        link: "",
+        tag: "Unity",
+    },
+    {
+        title: "System raportowania pracy",
+        description: "Projekt stworzony na React  z wykorzystaniem Firebase i Next.js",
+        link: "",
+        tag: "Inne",
+    },
+    {
+        title: "belac.pl",
+        description: "Projekt na Wordpress",
+        link: "",
+        tag: "Inne",
+    },
+    {
+        title: "GARDIO",
+        description: "Podstawowa gra na Unity która zawiera mechanikę ruchu z systemem animacji i własnym modelem zrobionym w Blender",
+        link: "",
+        tag: "Unity",
+    },
+    {
+        title: "Youtube Downloader",
+        description: "Podstawowa aplikacja stworzona za pomocą Python która pobiera filmiki z Youtube",
+        link: "",
+        tag: "Inne",
+    },
+    {
+        title: "SGVR",
+        description: "Silnik dla gier VR stworzony na Unity.",
+        link: "",
+        tag: "Unity",
+    },
+]
 
+let projects_divs = [];
 
 var variables = {
 
-    current_id: 1,
+    current_id: 0,
+
+}
+
+class project {
+
+    constructor(video_url, title, description, tag) {
+        this.object = createTemplate(video_url, title, description)
+        this.tag = tag;
+    }
+
+}
+
+function createTemplate(video_url, title, description) {
+
+    const div = document.createElement('div');
+    div.innerHTML = `
+        <iframe class="ytb-video" src="${video_url}"></iframe>
+        <h4>${title}</h4>
+        <p>${description}</p>
+    `;
+    div.className = 'project-div';
+
+    return div;
 
 }
 
 
 
-function switchPage(index){
 
 
-    if(index!= variables.current_id){
-        
+function setup() {
+
+    for (let i = 0; i < projects_array.length; i++) {
+        newproject = new project(projects_array[i].link, projects_array[i].title, projects_array[i].description, projects_array[i].tag)
+        obj = newproject.object
+
+        projects_section.append(obj);
+
+        projects_divs.push(newproject);
+    }
+
+}
+
+function showSelectedTags(tag) {
+   
+    projects_divs.forEach(project => {
+        if(project.tag != tag){
+            project.object.remove();
+        }else{
+            projects_section.append(project.object);
+        }
+    });
+}
+
+function showAll(){
+    projects_section.innerHTML = '';
+    projects_divs.forEach(project => {
+       
+        projects_section.append(project.object);
+    });
+    const radios = document.querySelectorAll('input[name="Filter"]');
+    radios.forEach(radio => {
+        radio.checked = false
+    });
+}
+
+
+function proccessTags(){
+   
+    const radios = document.querySelectorAll('input[name="Filter"]');
+
+    radios.forEach(radio => {
+        if (radio.checked){
+            showSelectedTags(radio.value);
+        }
+    });
+}
+
+
+function switchPage(index) {
+
+    if (index != variables.current_id) {
+
         pages[variables.current_id].classList.add("opaque");
         pages[index].classList.remove("opaque");
 
         variables.current_id = index;
 
     }
-    
 
 }
+
+
+setup()
