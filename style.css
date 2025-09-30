@@ -23,10 +23,28 @@ body{
     padding: 0;
     margin: 0;
     overflow-y: hidden;
-    overflow: hidden;
+    overflow-x: hidden;
+ 
+
+    
+}
+.github{
+    position: fixed;
+    z-index: 9999;
+
+    left:0;
+    bottom: 0;
+}
+.github > img{
+    padding: 0;
+    margin: 0;
 }
 
+
 .header{
+    position: absolute;
+    width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -34,7 +52,7 @@ body{
     background-color: var(--bg-secondary);
     border: var(--border) 0.1vw solid;
     box-shadow: var(--shadow);
-    padding: 1rem;
+    padding: 1vw;
 }
 
 .header h2{
@@ -131,7 +149,7 @@ body{
 
 .projects-bar{
     width: 100%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -140,6 +158,8 @@ body{
     gap: 2vh;
     overflow-y: scroll;
     padding: 1rem;
+
+
 }
 
 .project-div{
@@ -147,7 +167,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 45%;
     height: fit-content;
     padding: 2%;
     text-align: left;
@@ -187,9 +207,8 @@ body{
     }
     
     .navigation-div{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        
+        display: none;
     }
     
     .button{
@@ -255,7 +274,10 @@ body{
     .header h2{
         font-size: 1rem;
     }
-    
+    .navigation-div{
+        
+        display: none;
+    }
     .button{
         font-size: 0.8rem;
     }
@@ -278,7 +300,10 @@ body{
     .aside-bar{
         width: 20%;
     }
-    
+    .navigation-div{
+        
+        display: none;
+    }
     .project-div{
         width: calc(50% - 2vh);
     }
